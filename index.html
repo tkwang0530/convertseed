@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <!-- <meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:"> -->
   <title>Restore your access key into wallet</title>
   <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <!-- Latest compiled and minified CSS -->
@@ -33,7 +34,7 @@
     align-items: center;
   }
 </style>
-<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
+
 </head>
 <body>
   <div class="container">
@@ -68,15 +69,13 @@
         <div id="button" class="btn btn-primary">Recover to WIF</div>
       </div>
       <div class="form-group">
-        <div>WIF:</div>
-        <div class="wif" id="wif">
-        </div>
+        <label for="wif">WIF</label>
+        <input class="form-control" id="wif"/>
       </div>
       <div>
       <div class="form-group">
-        <div>Address:</div>
-        <div class="address" id="address">
-        </div>
+        <label for="address">address</label>
+        <input class="form-control" id="address"/>
       </div>
     </form>
   </div>

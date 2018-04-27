@@ -91,8 +91,8 @@ document.addEventListener('DOMContentLoaded',function(){
     let addressDOM = document.querySelector('#address');
     try {
       let {wif,address} = derivedWIF(currentSeed, currentAccountIndex, currentAccountType, currentAddressIndex);
-      wifDOM.textContent = wif;
-      addressDOM.textContent = address;
+      wifDOM.value = wif;
+      addressDOM.value = address;
     } 
     catch(err) {
       alert(err.message);
