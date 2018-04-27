@@ -1,52 +1,39 @@
 <!DOCTYPE html>
-<html lang="en">
+<link lang="en">
 <meta>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Restore your access key into wallet</title>
-  <script
-  src="https://code.jquery.com/jquery-2.2.4.min.js"
-  integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-  crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
 
 <!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">  
 <script type='text/javascript' src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js?ver=180120181119'></script>
 <script type="text/javascript" src="./mnemonic/mnemonic.js"></script>
 <script src="./js/type-search.js"></script>
 <script src="./libs/bitcoinjs-lib/bitcoinjs-lib.js"></script>
 <script src="./libs/bip39/bip39.js"></script>
 <script src="./js/index.js"></script>
-  <!-- <link rel="stylesheet" href="/font/GothamNarrow-Black.tff"></link> -->
-  <style type="text/css">
-    /* @font-face {
-      font-family: "GothamNarrow-Black";
-      src: local("GothamNarrow-Black"),url("./font/GothamNarrow-Black.ttf");
-    } */
-    /* * { */
-      /* font-family:'GothamNarrow-Black',serif; */
-      /* font-weight: bolder; */
-      /* font-size: 15px; */
-    /* } */
-    body {
-      display: -moz-flex;
-      display: -webkit-flex;
-      display: -ms-flex;
-      display: flex;
-      -moz-justify-content: center;
-      -webkit-justify-content: center;
-      -ms-justify-content: center;
-      justify-content: center;
-      -moz-align-items: center;
-      -webkit-align-items: center;
-      -ms-align-items: center;
-      align-items: center;
-    }
-  </style>
-  <meta  http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
+<style type="text/css">
+  body {
+    display: -moz-flex;
+    display: -webkit-flex;
+    display: -ms-flex;
+    display: flex;
+    -moz-justify-content: center;
+    -webkit-justify-content: center;
+    -ms-justify-content: center;
+    justify-content: center;
+    -moz-align-items: center;
+    -webkit-align-items: center;
+    -ms-align-items: center;
+    align-items: center;
+  }
+</style>
+<meta http-equiv="Content-Security-Policy" content="script-src 'self'; object-src 'none'; style-src cdn.example.org third-party.org; child-src https:">
 </head>
 <body>
   <div class="container">
