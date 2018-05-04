@@ -77,7 +77,42 @@ function derivedWIF(phrase, accountIndex=0, accountType=0, addressIndex=0) {
   
   return {wif:key.toWIF(), address:address};
 }
-
+/**
+ * checkSeddFormat
+ * @param {*} currentSeed 
+ */
+function checkSeedFormat(currentSeed) {
+  if (currentSeed == undefined || currentSeed == null || currentSeed.trim() == "") {
+    throw new Error("seed should not be null or Empty string");
+  }
+  if (currentSeed !== currentSeed.trim()) {
+    throw new Error("seed should not left space before and behind");
+  }
+  let tempSplit = currentSeed.split(" ").filter((item) => {
+    return item == "";
+  });
+  if (tempSplit.length !== 0) {
+    throw new Error("seed should seperate by single space");
+  }
+  let actualSplit = currentSeed.split(" ");
+  let actualSplitFormat = actualSplit.filter((item) => {
+    return item.length !== 6 ;
+  });
+  
+  let isLengthError = actualSplitFormat.length > 0;
+  let isSeedNumberCorret = (actualSplit.length !== 8 && actualSplit.length !== 12 && actualSplit.length !== 15 
+                      && actualSplit.length !== 18 && actualSplit.length !== 24);
+  if (isLengthError ) {
+    let isInLength5Error = actualSplit.filter((item)=>{
+      return item.length !== 5;
+    });
+    if (isInLength5Error.length > 0 ) {
+      throw new Error("seed length Error!");
+    } 
+  } else if (isSeedNumberCorret) {
+    throw new Error("seed number Error!");
+  }    
+}
 document.addEventListener('DOMContentLoaded',function(){
   document.querySelector('#accountIndex').value = 1;
   document.querySelector('#addressIndex').value = 1;
@@ -89,13 +124,20 @@ document.addEventListener('DOMContentLoaded',function(){
     let currentAccountType = document.querySelector('#accountType').value;
     let wifDOM = document.querySelector('#wif');
     let addressDOM = document.querySelector('#address');
+    let errMessage = document.querySelector('#errMessage');
+    let messageBar = document.querySelector('#messageBar');
     try {
+      checkSeedFormat(currentSeed);
+      messageBar.classList.add('not-show');
       let {wif,address} = derivedWIF(currentSeed, currentAccountIndex, currentAccountType, currentAddressIndex);
       wifDOM.value = wif;
       addressDOM.value = address;
     } 
     catch(err) {
       alert(err.message);
+      console.log(messageBar.classList);
+      messageBar.classList.remove('not-show');
+      errMessage.textContent = err.message;
     } 
   });
 });

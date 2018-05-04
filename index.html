@@ -33,6 +33,9 @@
     -ms-align-items: center;
     align-items: center;
   }
+  .not-show {
+    display: none;
+  }
 </style>
 
 </head>
@@ -43,6 +46,9 @@
       <div class="form-group">
         <label for="seed">seed</label>
         <input id="seed" name="seed" class="form-control"/>
+        <div class="alert alert-danger not-show" id="messageBar">
+          <div id="errMessage"></div> 
+        </div>
       </div>
       <div class="form-group">
         <label for="accountIndex">account #number (1-5)</label> 
