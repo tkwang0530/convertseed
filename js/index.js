@@ -101,6 +101,7 @@ function checkSeedFormat(currentSeed) {
   let isMemoric = actualSplit.filter((item) => {
     return isNaN(item);
   });
+  
   let isLengthError = actualSplitFormat.length > 0;
   let isSeedNumberCorret = (actualSplit.length !== 8 && actualSplit.length !== 12 && actualSplit.length !== 15 
                       && actualSplit.length !== 18 && actualSplit.length !== 24);
