@@ -104,7 +104,7 @@ function checkSeedFormat(currentSeed) {
   });
   let isLengthError = actualSplitFormat.length > 0;
   let isSeedNumberCorret = (actualSplit.length !== 8 && actualSplit.length !== 12 && actualSplit.length !== 15 
-                      && actualSplit.length !== 18 && actualSplit.length !== 24);
+                      && actualSplit.length !== 18 && actualSplit.length !== 24 && actualSplit.length !== 16);
   if (isMemoric.length == 0 && isLengthError ) {
     let isInLength5Error = actualSplit.filter((item)=>{
       return item.length !== 5;
