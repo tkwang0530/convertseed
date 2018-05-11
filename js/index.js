@@ -76,7 +76,7 @@ function derivedWIF(phrase, accountIndex=0, accountType=0, addressIndex=0) {
 
   let address = key.getAddress();
   console.log(masterNode.toBase58())
-  return {wif:key.toWIF(), address:address};
+  return {wif:key.toWIF(), address:address, phraseParse};
 }
 /**
  * checkSeddFormat
