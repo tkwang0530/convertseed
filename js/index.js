@@ -13,6 +13,7 @@ function changeNumberCodeMnemonic(phrase) {
       }).map((phraseContent)=>{
         return search(phraseContent);
       }).join(' ');
+      console.log(nonZeroSeed);
       return nonZeroSeed;
     }
     catch(e){
@@ -39,7 +40,7 @@ function derived2NHDWif(phrase) {
   let masterNode = bitcoin.fromSeedBuffer(seedBuffer);
   let wif = masterNode.keyPair.toWIF();
   let bip32_ext_address = masterNode.toBase58();
-  return {wif:wif,bip32_ext_address:bip32_ext_address};
+  return {wif:wif,bip32_ext_address:bip32_ext_address, phraseParse};
 }
 /**
  * derived WIF from digit phrase
@@ -74,7 +75,7 @@ function derivedWIF(phrase, accountIndex=0, accountType=0, addressIndex=0) {
   let key = account.derivePath(`${accountType}/${shiftedAddressIndex}`).keyPair;
 
   let address = key.getAddress();
-  
+  console.log(masterNode.toBase58())
   return {wif:key.toWIF(), address:address};
 }
 /**
@@ -101,7 +102,6 @@ function checkSeedFormat(currentSeed) {
   let isMemoric = actualSplit.filter((item) => {
     return isNaN(item);
   });
-  
   let isLengthError = actualSplitFormat.length > 0;
   let isSeedNumberCorret = (actualSplit.length !== 8 && actualSplit.length !== 12 && actualSplit.length !== 15 
                       && actualSplit.length !== 18 && actualSplit.length !== 24);
@@ -129,18 +129,21 @@ document.addEventListener('DOMContentLoaded',function(){
     let addressDOM = document.querySelector('#address');
     let errMessage = document.querySelector('#errMessage');
     let messageBar = document.querySelector('#messageBar');
+    let mnemonicDOM = document.querySelector('#mnemonic');
     try {
       checkSeedFormat(currentSeed);
       messageBar.classList.add('not-show');
-      let {wif,address} = derivedWIF(currentSeed, currentAccountIndex, currentAccountType, currentAddressIndex);
+      let {wif,address, phraseParse} = derivedWIF(currentSeed, currentAccountIndex, currentAccountType, currentAddressIndex);
       wifDOM.value = wif;
       addressDOM.value = address;
+      mnemonicDOM.value = phraseParse;
     } 
     catch(err) {
       alert(err.message);
       console.log(messageBar.classList);
       messageBar.classList.remove('not-show');
       errMessage.textContent = err.message;
+      mnemonicDOM.value='';
     } 
   });
 });
