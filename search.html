@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<title>Get Mnemonic word from numeric seed</title>
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+
+<!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="./mnemonic/mnemonic.js"></script>
+<script src="./js/type-search.js"></script>
+<script src="./libs/bitcoinjs-lib/bitcoinjs-lib.js"></script>
+<script src="./libs/bip39/bip39.js"></script>
+<script src="./js/index.js"></script>
+<style>
+  body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .not-show {
+    display: none;
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>Get Mnemonic word from Numeric Seed</h2>
+    <form>
+      <div class="form-group">
+        <label for="numericSeed">Enter Numeric Seed</label>
+        <input type="number" id="numericSeed" class="form-control" placeholder="Enter seed number">
+      </div>
+      <div class="form-group">
+        <label for="mnemonicWord">Mnemonic Word</label>
+        <input type="text" id="mnemonicWord" class="form-control" readonly>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Assume mnemonicMap is available globally from type-search.js
+    const numericSeedInput = document.getElementById('numericSeed');
+    const mnemonicWordOutput = document.getElementById('mnemonicWord');
+
+    numericSeedInput.addEventListener('input', () => {
+      const seedNumber = numericSeedInput.value.trim();
+      try {
+        if (seedNumber) {
+          const mnemonicWord = search(seedNumber); // Use the search function from type-search.js
+          mnemonicWordOutput.value = mnemonicWord;
+        } else {
+          mnemonicWordOutput.value = '';
+        }
+      } catch (error) {
+        mnemonicWordOutput.value = 'Not found';
+        console.error(error.message);
+      }
+    });
+  </script>
+</body>
+</html>
